@@ -13,6 +13,9 @@ app.get("/api/frase", (req, res) => {
   res.send("Hola");
 });
 
+app.get("api/users", (req, res) => {
+  res.send("Me tengo que traer todos los usuarios, estoy volviendo de a poco");
+});
 let users = [];
 //El post siempre crea algo, siempre se usa el Body para recibir la data
 app.post("/api/user", (req, res) => {
