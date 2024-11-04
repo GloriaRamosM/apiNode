@@ -13,5 +13,19 @@ app.get("/api/frase", (req, res) => {
   res.send("Hola");
 });
 
+let users = [];
+//El post siempre crea algo, siempre se usa el Body para recibir la data
+app.post("/api/user", (req, res) => {
+  let user = req.body;
+
+  if (!user.name || !user.last_name) {
+    return res.status(400).send({ status: "error" });
+  }
+
+  users.push(user);
+
+  return res.status(200).send({ status: "Sucess" });
+});
+
 // Levantar el servidor
 const server = app.listen(port, () => console.log("Listening on PORT 3000"));
