@@ -5,7 +5,7 @@ const port = 3000;
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json()); // esto es para Interpretar el Req.body. Decodifica el mensaje
 
 //Routes
 
