@@ -35,6 +35,21 @@ app.post("/api/user", (req, res) => {
 
 app.put("/api/user/:name", (req, res) => {
   let name = req.params.name;
+
+  // Encuentra el usuario en el arreglo `users` que tenga el `first_name` igual a `name`
+  let user = users.find((user) => user.first_name === name);
+
+  // Si no se encuentra el usuario, devolver un error 404
+  if (!user) {
+    return res.status(404).send({ status: "error", error: "User not found" });
+  }
+
+  // Aca esta actualizando y esta diciendo: Si llega por body, actualiza, si no llega, dejale asignado el que ya tenia
+  user.first_name = req.body.first_name || user.first_name;
+  user.last_name = req.body.last_name || user.last_name;
+
+  // Enviar respuesta de que se logro,  y tambien el usuario actualizado
+  res.send({ status: "success", message: "User updated", user });
 });
 
 //DELETE
