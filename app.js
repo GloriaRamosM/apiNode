@@ -41,7 +41,9 @@ app.put("/api/user/:name", (req, res) => {
 
   // Si no se encuentra el usuario, devolver un error 404
   if (!user) {
-    return res.status(404).send({ status: "error", error: "User not found" });
+    return res
+      .status(404)
+      .send({ status: "error", error: "User not found ..." });
   }
 
   // Aca esta actualizando y esta diciendo: Si llega por body, actualiza, si no llega, dejale asignado el que ya tenia
